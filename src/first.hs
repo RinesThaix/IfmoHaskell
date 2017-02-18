@@ -24,14 +24,14 @@ sort'   :: (Ord a) => [a] -> [a] -> [a]
 insert el l             = insert' el [] l
 
 insert' el l1 l2
-    | length l2 == 0    = l1 ++ [el]
+    | null l2           = l1 ++ [el]
     | el < head l2      = l1 ++ [el] ++ l2
     | otherwise         = insert' el (l1 ++ [(head l2)]) (tail l2)
 
 sort l                  = sort' [] l
 
 sort' l1 l2
-    | length l2 == 0    = l1
+    | null l2           = l1
     | otherwise         = sort' (insert (head l2) l1) (tail l2)
 
 main = do
